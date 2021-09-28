@@ -1,0 +1,15 @@
+{
+  "name": "assembler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "assembler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node -r esm assembler.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "esm": "^3.2.25"
+  }
+}

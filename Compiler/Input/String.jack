@@ -1,0 +1,130 @@
+class String {
+    
+    field int len;
+    field int maxLen;
+    field Array chars;
+
+    constructor String new(int maxLength) {
+        
+        if(maxLength = 0){
+           let maxLength = 1;   
+        }
+
+        let len = 0;
+        let maxLen = maxLength;
+        let chars = Array.new(maxLength);
+        return this;
+    }
+
+    method void dispose() {
+        do chars.dispose();
+        return;
+    }
+
+    method int length() {
+        return len;
+    }
+
+    method char charAt(int j) {
+        return chars[j];
+    }
+
+    method void setCharAt(int j, char c) {
+        let chars[j] = c;
+        return;
+    }
+
+
+    method String appendChar(char c) {
+        if(len < maxLen){
+            let chars[len] = c;
+            let len = len + 1;
+        }
+        return this;
+    }
+
+    method void eraseLastChar() {
+        if(len > 0){
+            let len = len - 1;
+        }
+        return;
+    }
+
+    method int intValue() {
+        var int intVal,index;
+        var boolean neg;
+
+        let intVal = 0;
+
+        if((len > 0) & (chars[0] = 45)){
+            let neg = true;
+            let index = 1;
+        }else{
+            let neg = false;
+            let index = 0;
+        }
+
+        while((index < len) & String.isDigit(chars[index])){
+            let intVal = (intVal * 10) + String.charToDigit(chars[index]);
+            let index = index + 1;
+        }
+
+        if(neg){
+            return -intVal;
+        }else{
+            return intVal;
+        }
+
+    }
+
+    function boolean isDigit(char c){
+        return ~(c < 48) & ~(c > 57);
+    }
+
+    function int charToDigit(char c){
+        return c - 48;
+    }
+
+    function char digitToChar(int d){
+        return d + 48;
+    }
+
+    method void setInt(int number) {
+        let len = 0;
+
+        if(number < 0){
+            let number = -number;
+            do appendChar(45);
+        }
+
+        do setIntHelper(number);
+
+        return;
+    }
+
+    method void setIntHelper(int number){
+        var int nextNum;
+
+        if(number < 10){
+            do appendChar(String.digitToChar(number));
+        }else{
+            let nextNum = number / 10;
+            do setIntHelper(nextNum);
+            do appendChar(String.digitToChar(number - (nextNum * 10)));
+        }
+
+        return;
+    }
+
+    function char newLine() {
+        return 128;
+    }
+
+    function char backSpace() {
+        return 129;
+    }
+
+    function char doubleQuote() {
+        return 34;
+    }
+}

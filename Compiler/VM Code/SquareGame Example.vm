@@ -1,0 +1,201 @@
+function SquareGame.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push constant 0
+push constant 0
+push constant 30
+call Square.new 3
+pop this 0
+push constant 0
+pop this 1
+push pointer 0
+return
+function SquareGame.dispose 0
+push argument 0
+pop pointer 0
+push this 0
+call Square.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function SquareGame.moveSquare 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 1
+eq
+if-goto IF_SQUAREGAME_0__TRUE
+goto IF_SQUAREGAME_0__FALSE
+label IF_SQUAREGAME_0__TRUE
+push this 0
+call Square.moveUp 1
+pop temp 0
+goto IF_SQUAREGAME_0__END
+label IF_SQUAREGAME_0__FALSE
+label IF_SQUAREGAME_0__END
+push this 1
+push constant 2
+eq
+if-goto IF_SQUAREGAME_1__TRUE
+goto IF_SQUAREGAME_1__FALSE
+label IF_SQUAREGAME_1__TRUE
+push this 0
+call Square.moveDown 1
+pop temp 0
+goto IF_SQUAREGAME_1__END
+label IF_SQUAREGAME_1__FALSE
+label IF_SQUAREGAME_1__END
+push this 1
+push constant 3
+eq
+if-goto IF_SQUAREGAME_2__TRUE
+goto IF_SQUAREGAME_2__FALSE
+label IF_SQUAREGAME_2__TRUE
+push this 0
+call Square.moveLeft 1
+pop temp 0
+goto IF_SQUAREGAME_2__END
+label IF_SQUAREGAME_2__FALSE
+label IF_SQUAREGAME_2__END
+push this 1
+push constant 4
+eq
+if-goto IF_SQUAREGAME_3__TRUE
+goto IF_SQUAREGAME_3__FALSE
+label IF_SQUAREGAME_3__TRUE
+push this 0
+call Square.moveRight 1
+pop temp 0
+goto IF_SQUAREGAME_3__END
+label IF_SQUAREGAME_3__FALSE
+label IF_SQUAREGAME_3__END
+push constant 5
+call Sys.wait 1
+pop temp 0
+push constant 0
+return
+function SquareGame.run 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+label WHILE_SQUAREGAME_4_START
+push local 1
+not
+not
+if-goto WHILE_SQUAREGAME_4_END
+label WHILE_SQUAREGAME_5_START
+push local 0
+push constant 0
+eq
+not
+if-goto WHILE_SQUAREGAME_5_END
+call Keyboard.keyPressed 0
+pop local 0
+push pointer 0
+call SquareGame.moveSquare 1
+pop temp 0
+goto WHILE_SQUAREGAME_5_START
+label WHILE_SQUAREGAME_5_END
+push local 0
+push constant 81
+eq
+if-goto IF_SQUAREGAME_6__TRUE
+goto IF_SQUAREGAME_6__FALSE
+label IF_SQUAREGAME_6__TRUE
+push constant 0
+not
+pop local 1
+goto IF_SQUAREGAME_6__END
+label IF_SQUAREGAME_6__FALSE
+label IF_SQUAREGAME_6__END
+push local 0
+push constant 90
+eq
+if-goto IF_SQUAREGAME_7__TRUE
+goto IF_SQUAREGAME_7__FALSE
+label IF_SQUAREGAME_7__TRUE
+push this 0
+call Square.decSize 1
+pop temp 0
+goto IF_SQUAREGAME_7__END
+label IF_SQUAREGAME_7__FALSE
+label IF_SQUAREGAME_7__END
+push local 0
+push constant 88
+eq
+if-goto IF_SQUAREGAME_8__TRUE
+goto IF_SQUAREGAME_8__FALSE
+label IF_SQUAREGAME_8__TRUE
+push this 0
+call Square.incSize 1
+pop temp 0
+goto IF_SQUAREGAME_8__END
+label IF_SQUAREGAME_8__FALSE
+label IF_SQUAREGAME_8__END
+push local 0
+push constant 131
+eq
+if-goto IF_SQUAREGAME_9__TRUE
+goto IF_SQUAREGAME_9__FALSE
+label IF_SQUAREGAME_9__TRUE
+push constant 1
+pop this 1
+goto IF_SQUAREGAME_9__END
+label IF_SQUAREGAME_9__FALSE
+label IF_SQUAREGAME_9__END
+push local 0
+push constant 133
+eq
+if-goto IF_SQUAREGAME_10__TRUE
+goto IF_SQUAREGAME_10__FALSE
+label IF_SQUAREGAME_10__TRUE
+push constant 2
+pop this 1
+goto IF_SQUAREGAME_10__END
+label IF_SQUAREGAME_10__FALSE
+label IF_SQUAREGAME_10__END
+push local 0
+push constant 130
+eq
+if-goto IF_SQUAREGAME_11__TRUE
+goto IF_SQUAREGAME_11__FALSE
+label IF_SQUAREGAME_11__TRUE
+push constant 3
+pop this 1
+goto IF_SQUAREGAME_11__END
+label IF_SQUAREGAME_11__FALSE
+label IF_SQUAREGAME_11__END
+push local 0
+push constant 132
+eq
+if-goto IF_SQUAREGAME_12__TRUE
+goto IF_SQUAREGAME_12__FALSE
+label IF_SQUAREGAME_12__TRUE
+push constant 4
+pop this 1
+goto IF_SQUAREGAME_12__END
+label IF_SQUAREGAME_12__FALSE
+label IF_SQUAREGAME_12__END
+label WHILE_SQUAREGAME_13_START
+push local 0
+push constant 0
+eq
+not
+not
+if-goto WHILE_SQUAREGAME_13_END
+call Keyboard.keyPressed 0
+pop local 0
+push pointer 0
+call SquareGame.moveSquare 1
+pop temp 0
+goto WHILE_SQUAREGAME_13_START
+label WHILE_SQUAREGAME_13_END
+goto WHILE_SQUAREGAME_4_START
+label WHILE_SQUAREGAME_4_END
+push constant 0
+return
